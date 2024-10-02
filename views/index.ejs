@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/listings.css">
+    <title>Listings</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Georgia', sans-serif;
+            touch-action: manipulation; /* Prevent zooming */
+
+        }
+
+       
+
+
+
+        .dots {
+            text-align: center;
+            position: absolute;
+            bottom: 10px;
+            width: 100%;
+        }
+
+        .dot {
+            display: inline-block;
+            width: 10px;
+            height: 10px;
+            margin: 0 5px;
+            background-color: white;
+            border-radius: 50%;
+            cursor: pointer;
+        }
+
+        .dot.active {
+            background-color: #717171;
+        }
+
+        @media (max-width: 480px) {
+            nav h1 {
+                font-size: 1rem;
+            }
+
+            nav ul li a {
+                font-size: 0.5rem;
+            }
+
+            .slidings {
+                height: 200px;
+                width: auto;
+            }
+
+            .caption {
+                font-size: 0.3rem;
+                padding: 5px;
+            }
+
+            .listing-content {
+                font-size: 0.4rem;
+            }
+
+            .listing-sidebar {
+                object-fit: wrap;
+            }
+
+            .footer {
+                font-size: 0.7rem;
+            }
+        }
+
+        .mainbtn, .latestbtn {
+            display: none;
+        }
+        .headline, .headline1 {
+    color: red;
+    animation: flash 1s step-end infinite;
+    text-decoration: underline;
+    font-size: 2vw; /* Responsive font size */
+    
+}
+
+.headline  {
+    position: absolute;
+    left: 30vw; /* Responsive right positioning */
+    top:auto; 
+    margin-top:1px;
+}
+.headline1{
+    position: absolute;
+    /* left: 5vw; Responsive left positioning */
+}
+
+@keyframes flash {
+    0%, 50%, 100% {
+        opacity: 1;
+    }
+    25%, 75% {
+        color: orange;
+    }
+}
+
+/* Media Queries for Responsiveness */
+
+/* Large screens */
+@media (min-width: 1200px) {
+    .headline, .headline1 {
+        font-size: 1.5vw;
+    }
+}
+
+/* Medium screens */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .headline, .headline1 {
+        font-size: 2.5vw;
+    }
+}
+
+/* Small screens */
+@media (max-width: 767px) {
+    .headline, .headline1 {
+        font-size: 4vw;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+     .headline {
+        font-size: 4vw;
+    }
+    .headline1{
+        display: none ;
+    }
+}
+.para {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0px 0  0   0;
+    /* background-color: #ffffff; */
+    border-radius: 2px;
+    margin: 0px;
+    transition: background-color 0.5s ease-in-out;
+    font-size: 15px;
+    font-family: sans-serif;
+    font-weight: bolder;
+    display: flex;
+    position: relative;
+}
+
+.para p{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 0px;
+    /* background-color: #ffffff; */
+    border-radius: 8px;
+    margin-bottom: 0px;
+    transition: background-color 0.5s ease-in-out;
+    font-size: 15px;
+    font-family: sans-serif;
+}
+ .para img{
+    width: 30%;
+    height: auto;
+    border-radius: 8px;
+    transition: background-color 0.5s ease-in-out;
+    margin-right: 15px;
+ }
+/* Hover effect */
+.para:hover {
+    background-color: #e9e9e9;
+    transition: background-color 0.2s ease-in-out;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Adding a subtle shadow */
+}
+
+/* Responsive Design */
+
+/* Large screens */
+@media (min-width: 1200px) {
+    .para {
+        font-size: 18px;
+        padding: 10px;
+    }
+}
+
+/* Medium screens */
+/* Medium screens */
+@media (min-width: 768px) and (max-width: 1199px) {
+    .para {
+        display: block; /* or whatever display style you want */
+        font-size: 16px;
+        padding: 8px;
+    }
+}
+
+/* Small screens */
+@media (max-width: 767px) {
+    .para {
+        font-size: 14px;
+        padding: 6px;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 480px) {
+    .para {
+        display: none; /* Hide the .para elements */
+    }
+
+}
+
+
+.navimg {
+   position: fixed;
+   top:10px;
+   left:10px;
+    width: 100px;
+    height: auto ;
+    margin-right: 10px;
+    background-color: transparent;
+    z-index: 10000;
+    display:block;
+    opacity: 0.8;
+}
+/* Add a flashing effect to the text */
+
+.date {
+    font-size: 10px; /* Font size for date */
+    color: #555; /* Dark gray color for the text */
+    text-align: left; /* Align text to the left */
+    margin-top: 16px; /* Spacing above the date */
+    font-style: italic; /* Italic style for emphasis */
+    position: absolute; /* Position it absolutely within the card */
+    bottom: 16px; /* Space from the bottom of the card */
+    left: 16px; /* Space from the left of the card */
+}
+@media (min-width: 481px) {
+    .btn {
+        display: none; /* Hide the button on larger screens */
+    }
+}
+
+/* #navList {
+
+            /* display: none; Initially hidden */
+            /* list-style: none; */
+            /* padding: 0;
+            margin: 0; */
+            
+        /* } */ 
+/* 
+        #navList li {
+            /* margin: 5px 0; Adjust spacing between items */
+        /* } */ 
+
+        /* Show the list when the button is clicked */
+        .nav-active {
+            display: block;
+        }
+        #navList.nav-active {
+    display: block; /* Show when nav-active class is added */
+}
+
+    </style>
+</head>
+<body>
+   
+    <div class="container">
+    <nav>
+   
+       
+        <button class="btn" ><span class="material-symbols-outlined">
+            menu
+            </span></button>
+      
+        <ul id="navList">
+            
+            
+            <li><a href="/entertenment">ENTERTAINMENT</a></li>
+            <li><a href="/Finance">FINANCE</a></li>
+            <li><a href="/Jobs">DAILY WORKOUTS</a></li>
+            <li><a href="/Sports">WHO REPORT</a></li>
+            <li><a href="/World">NEWS</a></li>
+            <% if (isAdmin) { %>
+                <li><a href="/admin">Admin Panel</a></li>
+                <li><a href="/logout">Logout</a></li>
+
+            <% } %>
+           
+
+        </ul>
+    </nav>
+    <!-- <img src="/news.webp" alt="Your Image" class="navimg"> -->
+
+    <div class="slidings">
+        <div class="slides">
+            <% if (newlatest.length > 0) { %>
+                <% newlatest.forEach(latest => { %>
+                    <div class="latest" data-id="<%= latest._id %>">
+                        <% if (latest.image && latest.image.data) { %>
+                            <img src="data:<%= latest.image.contentType %>;base64,<%= latest.image.data.toString('base64') %>" alt="Latest Image" />
+                            
+                        <% } %>
+                        <div class="caption">
+                            <h2><%= latest.title %></h2>
+                            <!-- <p><%= latest.para %></p> -->
+                        </div>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <p>No latest news available.</p>
+            <% } %>
+        </div>
+        <div class="dots">
+            <% if (newlatest.length > 0) { %>
+                <% newlatest.forEach((_, index) => { %>
+                    <span class="dot"></span>
+                <% }) %>
+            <% } %>
+        </div>g
+    </div>
+
+ 
+        <!-- <h3 class="headline">Watch health Cocious Posts On </h3>B4E9-74A3 -->
+        <% if (isAdmin) { %>
+            <form action="/listings/new" method="POST">
+                <button class="mainbtn" type="submit" style="display: block;">Create New Listing</button>
+            </form>
+        <% } %>
+        
+
+        <h3 class="headline1">Trending</h3>
+        <div class="listside">
+            <div class="listings-sidebar">
+                <% if (isAdmin) { %>
+                    <form action="/latest" method="POST">
+                        <button class="latestbtn" type="submit" style="display: block;">Create New Slidings</button>
+                    </form>
+                <% } %>
+                <% if (isAdmin) { %>
+                    <form action="/latestnews" method="POST">
+                        <button class="latestbtn" type="submit" style="display: block;">upload lstestnews </button>
+                    </form>
+                <% } %>
+
+                <% if (newlatestnews.length > 0) { %>
+                    <% newlatestnews.forEach(latest => { %>
+                        <div class="para">
+                        <p><%= latest.title%>
+                        <% if (isAdmin) { %>
+                            <form action="/<%=latest._id%>/?_method=DELETE" method="POST">
+                                <button class="latestbtn" type="submit" style="display: block;">delete </button>
+                            </form>
+                        <% } %>
+                    </p>
+                    <% if (latest.image && latest.image.data) { %>
+                        <img src="data:<%= latest.image.contentType %>;base64,<%= latest.image.data.toString('base64') %>" alt="Listing Image" />
+                       
+                       
+                    <% } %>
+                    
+                        <div class="date">Posted on-<%= new Date(latest.createdAt).toLocaleDateString("en-US", { 
+                            year: 'numeric', 
+                            month: 'long', 
+                            day: '2-digit' 
+                         }) %></div>
+                    
+                    </div>
+                    <% }) %>
+                <% } else { %>
+                    <p>No listings found.</p>
+                <% } %>
+            </div>
+           
+            <div class="listings-container">
+                
+                <% if (listings.length > 0) { %>
+                    <% listings.forEach(listing => { %>
+                        <div class="listing" data-id="<%= listing._id %>">
+                            <% if (listing.image && listing.image.data) { %>
+                                <img src="data:<%= listing.image.contentType %>;base64,<%= listing.image.data.toString('base64') %>" alt="Listing Image" />
+                                <div class="companylogo"> <img src="/news.webp" alt="Company Logo"></div>
+                               
+                            <% } %>
+                            <div class="listing-content">
+                                <h2><%= listing.title %></h2>
+                                <!-- <p><%= listing.description %></p>
+                                <p><%= listing.h1 %></p>
+                                <p><%= listing.h1para %></p>
+                                <p><%= listing.h2 %></p>
+                                <p><%= listing.h2para %></p> -->
+                               
+                               
+                            </div>
+                            <div class="date">Posted on-<%= new Date(listing.createdAt).toLocaleDateString("en-US", { 
+                                year: 'numeric', 
+                                month: 'long', 
+                                day: '2-digit' 
+                             }) %></div>
+                        </div>
+                    <% }) %>
+                <% } else { %>
+                    <p>No listings found.</p>
+                <% } %>
+            </div>
+        </div>
+    
+
+    <div class="footer">
+        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+        <nav>
+            <ul>
+                <li><a href="/terms">Terms and Conditions</a></li>
+                <li><a href="/privacy">Privacy Policy</a></li>
+                <li><a href="/about">About Us</a></li>
+                <li><a href="/contact">Contact Us</a></li>
+            </ul>
+        </nav>
+        <p>This website belongs to News Post and we upload daily news.</p>
+    </div>
+</div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            let currentIndex = 0;
+            const slides = document.querySelector('.slides');
+            const dots = document.querySelectorAll('.dot');
+            const totalSlides = dots.length;
+
+            function showSlide(index) {
+                if (index >= totalSlides) {
+                    currentIndex = 0;
+                } else if (index < 0) {
+                    currentIndex = totalSlides - 1;
+                } else {
+                    currentIndex = index;
+                }
+                slides.style.transform = `translateX(${-currentIndex * 100}%)`;
+                dots.forEach(dot => dot.classList.remove('active'));
+                dots[currentIndex].classList.add('active');
+            }
+
+            function nextSlide() {
+                showSlide(currentIndex + 1);
+            }
+
+            dots.forEach((dot, index) => {
+                dot.addEventListener('click', () => showSlide(index));
+            });
+
+            setInterval(nextSlide, 5000); // Change slide every 5 seconds
+
+            showSlide(currentIndex); // Initialize
+
+            // Add click event to each listing
+            document.querySelectorAll('.listing').forEach(listing => {
+                listing.addEventListener('click', () => {
+                    const listingId = listing.getAttribute('data-id');
+                    window.location.href = `/listings/${listingId}`;
+                });
+            });
+        });
+        document.querySelectorAll('.latest').forEach(latest => {
+                latest.addEventListener('click', () => {
+                    const latestId = latest.getAttribute('data-id');
+                    window.location.href = `/latest/slide/${latestId}`;
+                });
+            });
+            document.addEventListener('gesturestart', function (e) {
+            e.preventDefault();
+});
+const navButton = document.getElementsByClassName("btn")[0]; // Get the first button
+    const navList = document.getElementById("navList"); // Ensure the ID matches
+
+    if (navButton) {
+        navButton.addEventListener("click", function () {
+            console.log("Button clicked");
+            navList.classList.toggle("nav-active");
+        });
+    }
+    </script>
+
+</body>
+</html>

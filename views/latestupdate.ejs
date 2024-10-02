@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit latest</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #007bff;
+            color: #fff;
+            padding: 15px 0;
+            text-align: center;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            margin: 0;
+            font-size: 24px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin: 10px 0 5px;
+            font-weight: bold;
+        }
+        .static-field {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+            background: #e9ecef;
+        }
+        input[type="text"],
+        input[type="number"],
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 16px;
+        }
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+        button {
+            padding: 10px 15px;
+            border: none;
+            border-radius: 4px;
+            background-color: #28a745;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Edit Sliding</h1>
+    </header>
+
+    <div class="container">
+        <form method="POST" action="/sliding/<%= latest._id %>/edit?_method=put" enctype="multipart/form-data" >
+            <input type="hidden" name="_id" value="<%= latest._id %>">
+            
+            <label for="title">Title:</label>
+            <input type="text" name="title" id="title" value="<%= latest.title %>">
+
+            <label for="description">Description</label>
+            <textarea id="description" name="description" rows="4" required ><%= latest.description %></textarea>
+
+            <label for="image">Upload Image</label>
+            <input type="file" id="image_url" name="image" accept="image/png, image/jpeg"  required>
+
+            <label for="h">Main Heading </label>
+            <textarea id="h1" name="h" rows="2" ><%= latest.h %></textarea>
+
+            <label for="h1">Heading 1</label>
+            <textarea id="h1" name="h1" rows="2"><%= latest.h1 %></textarea>
+
+            <label for="h1para">Heading 1 Paragraph</label>
+            <textarea id="h1para" name="h1para" rows="4"><%= latest.h1para %></textarea>
+
+            <label for="h2">Heading 2</label>
+            <textarea id="h2" name="h2" rows="2"><%= latest.h2 %></textarea>
+
+            <label for="h2para">Heading 2 Paragraph</label>
+            <textarea id="h2para" name="h2para" rows="4"><%= latest.h2para %></textarea>
+
+            <label for="h3">Heading 3</label>
+            <textarea id="h3" name="h3" rows="2" ><%= latest.h3 %></textarea>
+
+            <label for="h3para">Heading 3 Paragraph</label>
+            <textarea id="h3para" name="h3para" rows="4"><%= latest.h3para %></textarea>
+            
+            <label for="p">Main Heading 2</label>
+            <textarea id="p" name="p" rows="2"><%= latest.p %></textarea>
+            
+            <label for="p1">Heading p1</label>
+            <textarea id="p1" name="p1" rows="2"><%= latest.p1 %></textarea>
+
+            <label for="p1para">Heading p1 Paragraph</label>
+            <textarea id="p1para" name="p1para" rows="4"><%= latest.p1para %></textarea>
+
+            <label for="p2">Heading p2</label>
+            <textarea id="p2" name="p2" rows="2" ><%= latest.p2 %></textarea>
+
+            <label for="p2para">Heading p2 Paragraph</label>
+            <textarea id="p2para" name="p2para" rows="4"><%= latest.p2para %></textarea>
+
+            <label for="p3">Heading p3</label>
+            <textarea id="p3" name="p3" rows="4"><%= latest.p3 %></textarea>
+
+            <label for="p3para">Heading p3 Paragraph</label>
+            <textarea id="p3para" name="p3para" rows="4"><%= latest.p3para %></textarea>
+
+            <label for="link">Link</label>
+            <textarea id="h2para" name="link" rows="4" value="<%= latest.link%>"></textarea>
+           
+
+
+           
+
+            <button type="submit">Update Sliding</button>
+        </form>
+    </div>
+</body>
+</html>

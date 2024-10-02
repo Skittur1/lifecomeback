@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/news.css">
+    <title>News about Taylor Swift</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <nav>
+        <h1>DAILY WORKOUTS</h1>
+        <ul>
+            <li><a href="/entertenment">ENTERTAINMENT</a></li>
+            <li><a href="/Finance">FINANCE</a></li>
+            <li><a href="/Jobs">DAILY WORKOUTS</a></li>
+            <li><a href="/Sports">WHO REPORT</a></li>
+            <li><a href="/World">NEWS</a></li>
+            
+        </ul>
+    </nav>
+    <ul>
+        <% news.forEach(article => { %>
+            <li>
+                <% if (article.urlToImage) { %>
+                    <img src="<%= article.urlToImage %>" alt="News Image">
+                <% } %>
+                
+                <h2><%= article.title %></h2>
+                <p><%= article.description %></p>
+                <a href="<%= article.url %>" target="_blank">Read more</a>
+            </li>
+        <% }) %>
+    </ul>
+</body>
+</html>

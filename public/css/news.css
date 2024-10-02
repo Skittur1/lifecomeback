@@ -1,0 +1,141 @@
+/* Base styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: #f4f4f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+h1 {
+    background: #007BFF;
+    color: #ffffff;
+    padding: 20px;
+    text-align: center;
+    border-bottom: 5px solid #0056b3;
+    margin: 0;
+    font-size: 2.5rem;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 20px auto;
+    max-width: 1200px; /* Adjust max-width as needed */
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* Two columns */
+    gap: 20px; /* Space between items */
+}
+
+li {
+    background: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+li:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+img {
+    max-width: 80%; /* Adjust to fit the container */
+    height: auto; /* Maintain aspect ratio */
+    display: block;
+    border-bottom: 2px solid #007BFF;
+}
+
+h2 {
+    margin: 15px;
+    color: #007BFF;
+    font-size: 1.75rem;
+    font-weight: 600;
+}
+
+p {
+    margin: 15px;
+    color: #555;
+}
+
+a {
+    display: block;
+    margin: 15px;
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: 600;
+    transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.main {
+    display: flex;
+    flex-wrap: wrap;
+    /* margin: 20px; */
+    padding: 15px;
+    width: 100%;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+    h1 {
+        font-size: 2rem;
+        padding: 15px;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    img {
+        max-width: auto;
+    }
+
+    ul {
+        grid-template-columns: 1fr; /* Single column layout */
+        gap: 10px;
+    }
+
+    li {
+        margin-bottom: 15px;
+    }
+
+    a {
+        margin: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 1.5rem;
+        padding: 10px;
+    }
+
+    img {
+        max-width: auto;
+    }
+
+    h2 {
+        font-size: 1.25rem;
+    }
+
+    ul {
+        grid-template-columns: 1fr; /* Single column layout */
+        gap: 5px;
+    }
+
+    li {
+        margin-bottom: 10px;
+    }
+
+    a {
+        margin: 5px;
+        font-size: 0.9rem;
+    }
+}

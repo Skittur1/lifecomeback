@@ -1,0 +1,93 @@
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.signup-container {
+    background-color: #ffffff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 500px;
+    position: relative;
+}
+
+.signup-container h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 2rem;
+    color: #333;
+    font-weight: 700;
+}
+
+.signup-container label {
+    font-weight: 700;
+    margin-bottom: 5px;
+    display: block;
+    color: #333;
+}
+
+.signup-container input[type="text"],
+        .signup-container input[type="email"],
+        .signup-container input[type="date"],
+        .signup-container input[type="password"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .signup-container input[type="text"]:focus,
+        .signup-container input[type="email"]:focus,
+        .signup-container input[type="date"]:focus,
+        .signup-container input[type="password"]:focus {
+            border-color: #bd6aa1;
+            outline: none;
+            box-shadow: 0 0 5px rgba(189, 106, 161, 0.5);
+        }
+
+.signup-container button {
+    width: 100%;
+    padding: 10px;
+    background-color: #bd6aa1;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.signup-container button:hover {
+    background-color: #a7558c;
+}
+
+.signup-container .login-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.signup-container .login-link a {
+    color: #bd6aa1;
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.signup-container .login-link a:hover {
+    text-decoration: underline;
+}
+
+.alert-danger {
+    margin-bottom: 20px;
+    font-size: 1rem;
+    font-weight: 600;
+}
