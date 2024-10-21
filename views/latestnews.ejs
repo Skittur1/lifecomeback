@@ -55,11 +55,13 @@
 
     <div class="container">
         <h1>Create New Latestnews</h1>
-        <form action="/latestnews1" method="POST">
+        <form action="/latestnews1" method="POST" enctype="multipart/form-data">
           
             <label for="latestparagraph">paragraph</label>
             <textarea id="paragraph" name="latestparagraph"></textarea><br>
-          
+            
+            <label for="image">Upload Image</label>
+            <input type="file" id="image_url" name="image" accept="image/png, image/jpeg" required>
             
 
             

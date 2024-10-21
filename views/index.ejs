@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/listings.css">
     <title>Home</title>
+    <link rel="icon" href="logo2.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
@@ -225,12 +226,13 @@ justify-content: space-between;
 /* Adjusted Company Logo Size */
 .companylogo {
     position: absolute;
-    top:178px;
-    left:5px;
-    width: 35px; /* Smaller width */
+    top:170px;
+    left:-5px;
+    width: 70px; /* Smaller width */
     height: auto; /* Maintain aspect ratio */
     opacity: 0.8;
     z-index: 10; /* Ensure it appears above the image */
+    object-fit: contain;
 }
 
 .companylogo img {
@@ -720,15 +722,15 @@ flex: 1 1 calc(50% - 20px); /* Adjust for smaller screens */
 
 .navimg {
    position: fixed;
-   top:10px;
-   left:10px;
-    width: 100px;
+   top:0px;
+   left:0px;
+    width: 200px;
     height: auto ;
-    margin-right: 10px;
+    
     background-color: transparent;
     z-index: 10000;
     display:block;
-    opacity: 0.8;
+    /* opacity: 0.8; */
 }
 /* Add a flashing effect to the text */
 
@@ -776,7 +778,7 @@ flex: 1 1 calc(50% - 20px); /* Adjust for smaller screens */
     <div class="container">
     <nav>
    
-       
+        
         <button class="btn" ><span class="material-symbols-outlined">
             menu
             </span></button>
@@ -798,8 +800,8 @@ flex: 1 1 calc(50% - 20px); /* Adjust for smaller screens */
 
         </ul>
     </nav>
-    <!-- <img src="/news.webp" alt="Your Image" class="navimg"> -->
-
+    
+    <li><img src="logo2.png" alt="Your Image" class="navimg"></li>
     <div class="slidings">
         <div class="slides">
             <% if (newlatest.length > 0) { %>
@@ -854,7 +856,7 @@ flex: 1 1 calc(50% - 20px); /* Adjust for smaller screens */
                 <% if (newlatestnews.length > 0) { %>
                     <% newlatestnews.forEach(latest => { %>
                         <div class="para">
-                        <p><%= latest.title%>
+                        <p><%= latest.latestparagraph%>
                         <% if (isAdmin) { %>
                             <form action="/<%=latest._id%>/?_method=DELETE" method="POST">
                                 <button class="latestbtn" type="submit" style="display: block;">delete </button>
@@ -887,7 +889,7 @@ flex: 1 1 calc(50% - 20px); /* Adjust for smaller screens */
                         <div class="listing" data-id="<%= listing._id %>">
                             <% if (listing.image && listing.image.data) { %>
                                 <img src="data:<%= listing.image.contentType %>;base64,<%= listing.image.data.toString('base64') %>" alt="Listing Image" />
-                                <div class="companylogo"> <img src="/news.webp" alt="Company Logo"></div>
+                                <div class="companylogo"> <img src="logo2.png" alt="Company Logo"></div>
                                
                             <% } %>
                             <div class="listing-content">
@@ -915,7 +917,7 @@ flex: 1 1 calc(50% - 20px); /* Adjust for smaller screens */
     
 
     <div class="footer">
-        <p>&copy; 2024 Your Company Name. All rights reserved.</p>
+        <p>&copy; 2024 LifeComeBack. All rights reserved.</p>
         <nav>
             <ul>
                 <li><a href="/terms">Terms and Conditions</a></li>
@@ -924,7 +926,7 @@ flex: 1 1 calc(50% - 20px); /* Adjust for smaller screens */
                 <li><a href="/contact">Contact Us</a></li>
             </ul>
         </nav>
-        <p>This website belongs to News Post and we upload daily news.</p>
+        <p>This website belongs to LifeComeBack.com and we upload Health Updates.</p>
     </div>
 </div>
 

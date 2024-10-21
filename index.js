@@ -94,7 +94,7 @@ app.get('/', async (req, res) => {
 
         // You can apply similar sorting if needed for 'latest' and 'latestnews'
         const newlatest = await latest.find({}).sort({ createdAt: -1 });
-        const newlatestnews = await listingModel.find({}).sort({ createdAt: -1 });
+        const newlatestnews = await latestnews.find({}).sort({ createdAt: -1 });
         const isAdmin = req.session.isAdmin || false; // Get isAdmin from session
         res.render('index', { listings, newlatest,newlatestnews, isAdmin });
     } catch (error) {
@@ -417,11 +417,18 @@ app.delete('/sliding/:id/delete', async (req,res)=>{
 app.post('/latestnews', async (req,res)=>{
     res.render('latestnews');
 });
-app.post('/latestnews1', async (req,res)=>{
+app.post('/latestnews1',upload.single('image'), async (req,res)=>{
     try {
         const { latestparagraph } = req.body;
+        const img = fs.readFileSync(req.file.path);
+        const encodedImage = img.toString('base64');
+
         let newLatest = new latestnews({
             latestparagraph,
+            image: {
+                data: Buffer.from(encodedImage, 'base64'),
+                contentType: req.file.mimetype
+            },
         });
         await newLatest.save();
         res.redirect('/');
@@ -453,7 +460,7 @@ app.delete('/:id', async (req, res)=>{
 
 app.get('/world', async (req, res) => {
     const apiKey = '776ba8b24e8344fd9c26ffd4560c14f3';
-    const url = `https://newsapi.org/v2/everything?q=Health&from=2024-09-19&sortBy=publishedAt&apikey=${apiKey}`;
+    const url = `https://newsapi.org/v2/everything?q=Health&from=2024-10-19&sortBy=publishedAt&apikey=${apiKey}`;
 
     try {
         const response = await axios.get(url);
@@ -474,7 +481,7 @@ app.get('/world', async (req, res) => {
 
 app.get('/entertenment', async (req, res) => {
     const apiKey = '776ba8b24e8344fd9c26ffd4560c14f3';
-    const url = `https://newsapi.org/v2/everything?q=Bollywood&from=2024-09-18&sortBy=publishedAt&apikey=${apiKey}`;
+    const url = `https://newsapi.org/v2/everything?q=Bollywood&from=2024-10-18&sortBy=publishedAt&apikey=${apiKey}`;
 
     try {
         const response = await axios.get(url);
@@ -494,7 +501,7 @@ app.get('/entertenment', async (req, res) => {
 
 app.get('/finance', async (req, res) => {
     const apiKey = '776ba8b24e8344fd9c26ffd4560c14f3';
-    const url = `https://newsapi.org/v2/everything?q=Finance&from=2024-09-18&sortBy=publishedAt&apikey=${apiKey}`;
+    const url = `https://newsapi.org/v2/everything?q=Finance&from=2024-10-18&sortBy=publishedAt&apikey=${apiKey}`;
 
     try {
         const response = await axios.get(url);
@@ -513,7 +520,7 @@ app.get('/finance', async (req, res) => {
 
 app.get('/sports', async (req, res) => {
     const apiKey = '776ba8b24e8344fd9c26ffd4560c14f3';
-    const url = `https://newsapi.org/v2/everything?q=World health organisation&from=2024-09-18&sortBy=publishedAt&apikey=${apiKey}`;
+    const url = `https://newsapi.org/v2/everything?q=World health organisation&from=2024-10-18&sortBy=publishedAt&apikey=${apiKey}`;
 
     try {
         const response = await axios.get(url);
@@ -532,7 +539,7 @@ app.get('/sports', async (req, res) => {
   
 app.get('/jobs', async (req, res) => {
     const apiKey = '776ba8b24e8344fd9c26ffd4560c14f3';
-    const url = `https://newsapi.org/v2/everything?q=workout&from=2024-09-18&sortBy=publishedAt&apikey=${apiKey}`;
+    const url = `https://newsapi.org/v2/everything?q=workout&from=2024-10-18&sortBy=publishedAt&apikey=${apiKey}`;
 
     try {
         const response = await axios.get(url);
