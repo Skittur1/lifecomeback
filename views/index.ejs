@@ -138,11 +138,11 @@ nav ul li a:hover {
 /* Listings */
 .container {
     width: 100%;
-    margin: 0 20px 20px 20px;
+    margin: 0px 20px 20px 20px;
     /* margin-top: 25px; */
     padding-top: 0px;
     /* padding: 20px; */
-    background-color: #fff;
+    background-color: #ECEFF1;
     border-radius: 8px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
    
@@ -789,8 +789,8 @@ flex: 1 1 calc(50% - 20px); /* Adjust for smaller screens */
             </span></button>
       
         <ul id="navList">
-            
-            
+            <li><a href="/">HOME</a></li>
+            <li><a href="/Beauty">BEAUTY</a></li>
             <li><a href="/entertenment">ENTERTAINMENT</a></li>
             <li><a href="/Finance">FINANCE</a></li>
             <li><a href="/Jobs">DAILY WORKOUTS</a></li>
@@ -811,37 +811,45 @@ flex: 1 1 calc(50% - 20px); /* Adjust for smaller screens */
         <div class="slides">
             <% if (newlatest.length > 0) { %>
                 <% newlatest.forEach(latest => { %>
-                    <div class="latest" data-id="<%= latest._id %>">
-                        <% if (latest.image && latest.image.data) { %>
-                            <img src="data:<%= latest.image.contentType %>;base64,<%= latest.image.data.toString('base64') %>" alt="Latest Image" />
-                            
+                    <div class="latest" data-id="<%= latest.id %>">
+                        <% if (latest.image && latest.imageContentType) { %>
+                            <img src="data:<%= latest.imageContentType %>;base64,<%= latest.image %>" alt="Listing Image" />
+                        <% } else { %>
+                            <p>No image available.</p>
                         <% } %>
                         <div class="caption">
                             <h2><%= latest.title %></h2>
-                            <!-- <p><%= latest.para %></p> -->
                         </div>
                     </div>
                 <% }) %>
             <% } else { %>
                 <p>No latest news available.</p>
             <% } %>
+            
+            
+            
+            
+            
+            
         </div>
+   
+    
         <div class="dots">
             <% if (newlatest.length > 0) { %>
                 <% newlatest.forEach((_, index) => { %>
                     <span class="dot"></span>
                 <% }) %>
             <% } %>
-        </div>g
+        </div>
     </div>
 
  
         <!-- <h3 class="headline">Watch health Cocious Posts On </h3>B4E9-74A3 -->
-        <% if (isAdmin) { %>
+        <!-- <% if (isAdmin) { %> -->
             <form action="/listings/new" method="POST">
                 <button class="mainbtn" type="submit" style="display: block;">Create New Listing</button>
             </form>
-        <% } %>
+        <!-- <% } %> -->
         
 
         <h3 class="headline1">Trending</h3>
@@ -863,16 +871,22 @@ flex: 1 1 calc(50% - 20px); /* Adjust for smaller screens */
                         <div class="para">
                         <p><%= latest.latestparagraph%>
                         <% if (isAdmin) { %>
-                            <form action="/<%=latest._id%>/?_method=DELETE" method="POST">
+                            <form action="/<%=latest.id%>/?_method=DELETE" method="POST">
                                 <button class="latestbtn" type="submit" style="display: block;">delete </button>
                             </form>
                         <% } %>
                     </p>
-                    <% if (latest.image && latest.image.data) { %>
-                        <img src="data:<%= latest.image.contentType %>;base64,<%= latest.image.data.toString('base64') %>" alt="Listing Image" />
-                       
-                       
+                    <% if (latest.image && latest.imageContentType) { %>
+                        <img src="data:<%= latest.imageContentType %>;base64,<%= latest.image %>" alt="Listing Image" />
+                    <% } else { %>
+                        <p>No image available.</p>
                     <% } %>
+                    <div class="caption">
+                        <h2><%= latest.title %></h2>
+                    </div>
+                
+        
+        
                     
                         <div class="date">Posted on-<%= new Date(latest.createdAt).toLocaleDateString("en-US", { 
                             year: 'numeric', 
@@ -880,7 +894,7 @@ flex: 1 1 calc(50% - 20px); /* Adjust for smaller screens */
                             day: '2-digit' 
                          }) %></div>
                     
-                    </div>
+                        </div>
                     <% }) %>
                 <% } else { %>
                     <p>No listings found.</p>
@@ -891,12 +905,17 @@ flex: 1 1 calc(50% - 20px); /* Adjust for smaller screens */
                 
                 <% if (listings.length > 0) { %>
                     <% listings.forEach(listing => { %>
-                        <div class="listing" data-id="<%= listing._id %>">
-                            <% if (listing.image && listing.image.data) { %>
-                                <img src="data:<%= listing.image.contentType %>;base64,<%= listing.image.data.toString('base64') %>" alt="Listing Image" />
+                        <div class="listing" data-id="<%= listing.id %>">
+                            <% if (listing.image && listing.imageContentType) { %>
+                                <img src="data:<%= listing.imageContentType %>;base64,<%= listing.image %>" alt="Listing Image" />
                                 <div class="companylogo"> <img src="logo2.png" alt="Company Logo"></div>
-                               
+                            <% } else { %>
+                                <p>No image available.</p>
                             <% } %>
+                            
+                           
+                            
+                            
                             <div class="listing-content">
                                 <h2><%= listing.title %></h2>
                                 <!-- <p><%= listing.description %></p>
@@ -912,6 +931,7 @@ flex: 1 1 calc(50% - 20px); /* Adjust for smaller screens */
                                 month: 'long', 
                                 day: '2-digit' 
                              }) %></div>
+                             
                         </div>
                     <% }) %>
                 <% } else { %>
@@ -969,18 +989,22 @@ flex: 1 1 calc(50% - 20px); /* Adjust for smaller screens */
 
             // Add click event to each listing
             document.querySelectorAll('.listing').forEach(listing => {
-                listing.addEventListener('click', () => {
-                    const listingId = listing.getAttribute('data-id');
-                    window.location.href = `/listings/${listingId}`;
-                });
-            });
+    listing.addEventListener('click', () => {
+        const listingId = listing.getAttribute('data-id');
+       
+        window.location.href = `/listings/${listingId}`;
+    });
+});
         });
-        document.querySelectorAll('.latest').forEach(latest => {
-                latest.addEventListener('click', () => {
-                    const latestId = latest.getAttribute('data-id');
-                    window.location.href = `/latest/slide/${latestId}`;
-                });
-            });
+
+document.querySelectorAll('.latest').forEach(latest => {
+    latest.addEventListener('click', () => {
+        const latestId = latest.getAttribute('data-id');
+       
+        window.location.href = `/latest/slide/${latestId}`;
+    });
+});
+
             document.addEventListener('gesturestart', function (e) {
             e.preventDefault();
 });

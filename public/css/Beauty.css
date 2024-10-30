@@ -1,0 +1,559 @@
+body {
+    font-family: 'Georgia', sans-serif;
+    background-color: #ECEFF1;
+    margin: 0;
+    padding: 0;
+}
+
+/* Navigation */
+nav {
+    background-color: #f50000;
+    color: #fdfdfd;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+nav h1 {
+    font-size: 1.6rem;
+    margin: 0;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+nav ul li {
+    margin: 0 10px;
+}
+
+nav ul li a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+    
+}
+
+nav ul li a:hover {
+    color: #f4b400;
+}
+
+/* Slideshow */
+/* Slideshow container */
+.slidings {
+    position: relative;
+    overflow: hidden;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #ffffff;
+    margin: 10px auto;
+    border-radius: 10px;
+    width: 1000px;
+}
+
+/* Slides container */
+.slides {
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: transform 1s ease; /* Smooth transition for sliding effect */
+    object-fit: cover;
+}
+
+/* Each slide */
+.latest {
+    position: relative;
+    min-width: 100%; /* Ensure each slide takes up the full width */
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 1s ease-in-out; /* Fade effect */
+    opacity: 1; /* Hidden by default */
+    object-fit: cover;
+}
+
+/* Show the active slide */
+.latest.active {
+    opacity: 1; /* Show the active slide */
+    transition: opacity 1s ease-in-out;
+}
+
+.latest img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+
+.caption {
+    position: absolute; /* Position relative to .latest */
+    bottom: 10px;
+    left: 10px;
+    color: #fff;
+    /* background: rgba(0, 0, 0, 0.7); Slightly darker for better visibility */
+    padding: 10px;
+    border-radius: 5px;
+    z-index: 10; /* Lower z-index as px is invalid and to avoid issues */
+    max-width: 90%; /* Keeps caption within bounds */
+}
+
+.caption h2 {
+    font-size: 1.5rem;
+    margin: 0;
+}
+
+
+.caption p {
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+/* Listings */
+.container {
+    width: 100%;
+    margin: 0px 20px 20px 20px;
+    /* margin-top: 25px; */
+    padding-top: 0px;
+    /* padding: 20px; */
+    background-color: #ECEFF1;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+   
+}
+
+.container form {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.container button {
+    background-color: #4a4a4a;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.container button:hover {
+    background-color: #333;
+}
+
+.listings-container {
+    
+    width: 100%;
+display: flex;
+flex-wrap: wrap;
+gap: 20px;
+padding-bottom: 10px;
+margin-top:30px;
+justify-content: space-between;
+}
+.listing {
+    flex: 0 1 calc(33.33% - 20px);  /* Fixed width */
+    height: 400px; /* Fixed height */
+    box-sizing: border-box;
+    margin-bottom: 25px;
+    overflow: hidden;
+    flex-direction: row; 
+}
+
+
+.listing:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+.listing img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+    /* border-radius: 8px; */
+}
+
+.listing-content {
+    padding-left: 10px;
+    overflow:hidden ;
+    text-align:left;
+}
+
+.listing h2 {
+    margin: 0 0 10px;
+    font-size: 1.2rem;
+    color: #333;
+    font-weight: 700;
+}
+
+.listing p {
+    font-size: 1rem;
+    color: #666;
+    line-height: 1.6;
+    margin: 5px 0;
+}
+
+.listing p strong {
+    color: #333;
+}
+/* Adjusted Company Logo Size */
+.companylogo {
+    position: absolute;
+    top:178px;
+    left:5px;
+    width: 35px; /* Smaller width */
+    height: auto; /* Maintain aspect ratio */
+    opacity: 0.8;
+    z-index: 10; /* Ensure it appears above the image */
+}
+
+.companylogo img {
+    width: 100%; /* Ensure the logo scales with its container */
+    height: auto; /* Maintain aspect ratio */
+}
+
+/* Ensure the parent containers are positioned relatively */
+.latest, .listing {
+    position: relative; /* Position relative to allow absolute positioning of logo */
+    overflow: hidden; /* Ensure content doesn't spill over */
+}
+
+/* Footer */
+.footer {
+    background: linear-gradient(135deg, #a1cbd8, #1a1a1a);
+    color: #fff;
+    text-align: center;
+    padding: 40px 20px;
+    border-radius: 15px;
+    margin: 30px 0;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    position: relative;
+    overflow: hidden;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -50%;
+    width: 200%;
+    height: 100%;
+    background: linear-gradient(90deg, rgba(183, 118, 240, 0.2), rgba(91, 96, 148, 0));
+    transform: skewX(-20deg);
+    transition: all 0.5s ease-in-out;
+}
+
+.footer:hover::before {
+    left: 150%;
+}
+
+.footer p {
+    margin: 10px 0;
+    font-size: 1.1em;
+    letter-spacing: 0.5px;
+}
+
+.footer nav ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+}
+
+.footer nav ul li {
+    display: inline;
+}
+
+.footer nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    position: relative;
+    transition: color 0.3s ease;
+}
+
+.footer nav ul li a::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: -5px;
+    width: 0;
+    height: 2px;
+    background: #fff;
+    transition: all 0.3s ease-in-out;
+}
+
+.footer nav ul li a:hover {
+    color: #f0a500;
+}
+
+.footer nav ul li a:hover::after {
+    left: 0;
+    width: 100%;
+}
+
+.footer nav ul li a::after {
+    transform: translateX(-50%);
+}
+
+.footer p:last-child {
+    font-size: 1.2em;
+    margin-top: 20px;
+    font-style: italic;
+    color: #d4d4d4;
+    transition: color 0.3s ease;
+}
+
+.footer p:last-child:hover {
+    color: #f0a500;
+}
+
+/* Dots */
+.dots {
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+}
+
+.dot {
+    height: 12px;
+    width: 12px;
+    margin: 0 4px;
+    background-color: #bbb;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.6s ease;
+}
+
+.active {
+    background-color: #717171;
+}
+@media (max-width: 768px) {
+.listing {
+flex: 1 1 calc(50% - 20px); /* Adjust for smaller screens */
+}
+}
+
+/* Media Query for Mobile Devices */
+/* Media Query for Mobile Devices */
+@media (max-width: 768px) {
+    nav {
+        display: flex;
+        align-items: center;
+    }
+
+    nav ul {
+        display: flex;
+        align-items: center;
+        margin: 0;
+        padding: 0;
+    }
+
+    nav ul li {
+        margin: 10px;
+    }
+
+    .slidings {
+        height: 30vh;
+        width: 1200px;
+    }
+
+    /* Make images inside .slidings responsive */
+    .latest img {
+        width: 100%; /* Ensure the image takes full width of its container */
+        height: auto; /* Maintain aspect ratio */
+    }
+
+    .caption h2 {
+        font-size: 1.4rem;
+    }
+
+    .caption p {
+        font-size: 0.9rem;
+    }
+
+    .container {
+        padding: 15px;
+    }
+
+    .listing {
+        width: 100%;
+        flex: 1 1 100%;
+    }
+}
+/* Media Query for Extra Small Devices (max-width: 480px) */
+@media (max-width: 480px) {
+    .listing {
+        flex: 0 1 calc(100% - 20px); /* Take full width on smaller screens */
+        margin: 0; /* Remove margin to take full width */
+    }
+    .container{
+        padding: 2px;
+    }
+    .listings-container {
+        /* display: flex; Ensure it uses flexbox */
+        justify-content: center;
+        width: 100%; /* Ensure the container also takes full width */
+        padding: 0; /* Remove padding if necessary */
+    }
+
+    .listings-sidebar {
+        display: none ;
+        
+     }
+    .listing-content h2{
+        font-size: 15px;
+    }
+    
+
+    .container {
+        justify-content: center;
+        max-width: 100%;
+        margin-left: 0%;
+    }
+    nav ul{
+        display: none;
+    }
+     .btn{
+       display: block  ;
+    }
+}
+
+
+
+
+.listings-sidebar {
+    width:30%;
+    position: relative;
+    margin-top: 5%;
+
+
+}
+
+.listside{
+    display: flex;
+}
+@media (max-width: 480px) {
+    .btn {
+        display: block; /* Ensure the button is visible on small screens */
+       
+        color: rgb(226, 7, 7); /* Button text color */
+        border: none; /* No border */
+        padding: 10px; /* Padding around button */
+        cursor: pointer; /* Pointer cursor on hover */
+        font-size: 16px; /* Button font size */
+        border-radius: 5px; /* Rounded corners */
+       
+            background-color: transparent; /* Make the button background transparent */
+           
+            
+            display: flex;
+            align-items: center;
+        
+    }
+        
+    
+
+    #navList {
+        display: none; /* Ensure it's hidden initially */
+        background-color: #f8f9fa; /* Background color for the nav list */
+        border: 1px solid #ddd; /* Border around nav list */
+        position: absolute; /* Positioning the list */
+        top: 50px; /* Position below the button */
+        left: 0; /* Align to the left */
+        width: 100%; /* Full width */
+        z-index: 1000; /* Ensure it appears above other elements */
+    }
+
+    /* Style nav links */
+    #navList li {
+        padding: 10px; /* Padding for list items */
+        border-bottom: 1px solid #ddd; /* Border between items */
+    }
+
+    #navList li:last-child {
+        border-bottom: none; /* Remove border for the last item */
+    }
+
+    #navList a {
+        text-decoration: none; /* Remove underline from links */
+        color: #333; /* Link text color */
+        display: block; /* Make the link occupy the full area */
+    }
+
+    #navList a:hover {
+        background-color: #007BFF; /* Change background on hover */
+        color: white; /* Change text color on hover */
+    }
+}
+.navimg {
+    position: fixed;
+    top:4px;
+    left:25px;
+     width: 180px;
+     height: auto ;
+     
+     background-color: transparent;
+     z-index: 10000;
+     display:block;
+     /* opacity: 0.8; */
+ }
+ @media (max-width: 480px) {
+    .btn {
+        display: block; /* Ensure the button is visible on small screens */
+       
+        color: rgb(226, 7, 7); /* Button text color */
+        border: none; /* No border */
+        padding: 10px; /* Padding around button */
+        cursor: pointer; /* Pointer cursor on hover */
+        font-size: 16px; /* Button font size */
+        border-radius: 5px; /* Rounded corners */
+       
+            background-color: transparent; /* Make the button background transparent */
+           
+            
+            display: flex;
+            align-items: center;
+        
+    }
+}
+.nav-active {
+    display: block;
+}
+#navList.nav-active {
+display: block; /* Show when nav-active class is added */
+}
+@media (min-width: 481px) {
+    .btn {
+        display: none; /* Hide the button on larger screens */
+    }
+}
+.date {
+    font-size: 10px; /* Font size for date */
+    color: #555; /* Dark gray color for the text */
+    text-align: left; /* Align text to the left */
+    margin-top: 16px; /* Spacing above the date */
+    font-style: italic; /* Italic style for emphasis */
+    position: absolute; /* Position it absolutely within the card */
+    bottom: 16px; /* Space from the bottom of the card */
+    left: 16px; /* Space from the left of the card */
+}

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/Beauty.css">
+    <title>Beauty</title>
+    <link rel="icon" href="logo2.png" type="image/png">
+</head>
+<body>
+    <div class="container">
+   
+
+        <nav>
+   
+        
+            <button class="btn" ><span class="material-symbols-outlined">
+                menu
+                </span></button>
+          
+            <ul id="navList">
+                <li><a href="/">HOME</a></li>
+                <li><a href="/Beauty">BEAUTY</a></li>
+                <li><a href="/entertenment">ENTERTAINMENT</a></li>
+                <li><a href="/Finance">FINANCE</a></li>
+                <li><a href="/Jobs">DAILY WORKOUTS</a></li>
+                <li><a href="/Sports">WHO REPORT</a></li>
+                <li><a href="/World">NEWS</a></li>
+              
+               
+    
+            </ul>
+        </nav>
+        <li><img src="logo2.png" alt="Your Image" class="navimg"></li>
+        <%if (isAdmin) { %>
+        <form action="/Beauty/new" method="POST">
+            <button class="mainbtn" type="submit" style="display: block;">Create New BeautyPost</button>
+        </form>
+        <% } %>
+        <div class="listings-container">        
+        <% if (beauty.length > 0) { %>
+            <% beauty.forEach(listing => { %>
+                <div class="listing" data-id="<%=listing.id %>">
+                    <% if (listing.image && listing.imageContentType) { %>
+                        <img src="data:<%= listing.imageContentType %>;base64,<%= listing.image %>" alt="Listing Image" />
+                        <div class="companylogo"> <img src="logo2.png" alt="Company Logo"></div>
+                    <% } else { %>
+                        <p>No image available.</p>
+                    <% } %>
+                    <div class="listing-content">
+                        <h2><%= listing.title %></h2>
+                        <!-- <p><%= listing.description %></p>
+                        <p><%= listing.h1 %></p>
+                        <p><%= listing.h1para %></p>
+                        <p><%= listing.h2 %></p>
+                        <p><%= listing.h2para %></p> -->
+                       
+                       
+                    </div>
+                    <div class="date">Posted on-<%= new Date(listing.createdAt).toLocaleDateString("en-US", { 
+                        year: 'numeric', 
+                        month: 'long', 
+                        day: '2-digit' 
+                     }) %></div>
+                </div>
+               
+            <% }) %>
+        <% } else { %>
+            <p>No listings found.</p>
+        <% } %>
+    </div>
+
+    </div>
+
+    
+</body>
+<script>
+    const navButton = document.getElementsByClassName("btn")[0]; // Get the first button
+    const navList = document.getElementById("navList"); // Ensure the ID matches
+
+    if (navButton) {
+        navButton.addEventListener("click", function () {
+            console.log("Button clicked");
+            navList.classList.toggle("nav-active");
+        });
+    }
+    document.querySelectorAll('.listing').forEach(listing => {
+                listing.addEventListener('click', () => {
+                    const listingId = listing.getAttribute('data-id');
+                    window.location.href = `/Beauty/inside/${listingId}`;
+                });
+            });
+</script>
+</html>

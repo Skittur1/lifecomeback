@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Listing Details</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <title>Heath Posts</title>
+    <link rel="icon" href="logo2.png" type="image/png">
+   
     <style>
         body {
             font-family: 'Georgia', sans-serif;
@@ -14,7 +16,7 @@
             justify-content: center;
         }
         header {
-            background-color: #ff4d4d; /* Breaking news red */
+            background-color: #f50000; /* Breaking news red */
             color: #fff;
             padding: 15px;
             text-align: center;
@@ -133,15 +135,20 @@
 <body>
 
     <header>
-        <h1>BREAKING NEWS</h1>
+        <h1>Explore Healthy Posts On LifeComeBack.com</h1>
     </header>
     <div class="container">
         <div class="listing-detail">
             <h2><%= listing.title %></h2>
             
-            <% if (listing.image && listing.image.data) { %>
-                <img src="data:<%= listing.image.contentType %>;base64,<%= listing.image.data.toString('base64') %>" alt="Listing Image">
+           
+            <% if (listing.image && listing.imageContentType) { %>
+                <img src="data:<%= listing.imageContentType %>;base64,<%= listing.image %>" alt="Listing Image" />
+                
+            <% } else { %>
+                <p>No image available.</p>
             <% } %>
+     
             
             
             <p><%= listing.description %></p>
@@ -166,13 +173,13 @@
             <a href="/" class="back-link">Back to Listings</a>
             <%if(isAdmin){%>
             <!-- Update Form -->
-            <form method="POST" action="/listings/<%= listing._id %>/updated" enctype="multipart/form-data">
+            <form method="POST" action="/listings/<%=listing.id %>/updated" enctype="multipart/form-data">
                 <!-- Include form fields here for updating the listing -->
                 <button type="submit">Update Listing</button>
             </form>
           
             <!-- Delete Form -->
-            <form method="POST" action="/listings/<%= listing._id %>?_method=DELETE">
+            <form method="POST" action="/listings/<%=listing.id %>?_method=DELETE">
                 <button id="btn" type="submit" aria-label="Delete this listing">Delete</button>
             </form>
             <%}%>

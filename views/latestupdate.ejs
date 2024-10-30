@@ -81,7 +81,7 @@
     </header>
 
     <div class="container">
-        <form method="POST" action="/sliding/<%= latest._id %>/edit?_method=put" enctype="multipart/form-data" >
+        <form method="POST" action="/sliding/<%= latest.id %>/edit?_method=put" enctype="multipart/form-data" >
             <input type="hidden" name="_id" value="<%= latest._id %>">
             
             <label for="title">Title:</label>

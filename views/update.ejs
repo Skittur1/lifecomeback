@@ -81,8 +81,8 @@
     </header>
 
     <div class="container">
-        <form method="POST" action="/listings/<%= listing._id %>/edit?_method=put" enctype="multipart/form-data">
-            <input type="hidden" name="_id" value="<%= listing._id %>">
+        <form method="POST" action="/listings/<%= listing.id %>/edit?_method=put" enctype="multipart/form-data">
+            <input type="hidden" name="id" value="<%= listing.id %>">
             
             <label for="title">Title:</label>
             <input type="text" name="title" id="title" value="<%= listing.title %>">
