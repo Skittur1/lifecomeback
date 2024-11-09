@@ -46,8 +46,8 @@ app.use(override("_method"));
 // Connect to MongoDB
 // Database configuration
 const dbConfig = {
-    host: '13.228.225.19',
-    user: 'root',
+    host: 'localhost',
+    user: '13.228.225.19',
     password: 'Swap8497#',
     database: 'lifecomeback'
 };
