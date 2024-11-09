@@ -47,7 +47,7 @@ app.use(override("_method"));
 // Database configuration
 const dbConfig = {
     host: 'localhost',
-    user: '13.228.225.19',
+    user: 'root',
     password: 'Swap8497#',
     database: 'lifecomeback'
 };
